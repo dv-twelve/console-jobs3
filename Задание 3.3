@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Hello
+{
+    class Program
+    {
+        static double f(double x)
+        {
+            double y = 0;
+            double d = Math.Sqrt(x * x + 1);
+            double c = Math.Sqrt(x * x + 5);
+            if (Math.Abs(x) <= 1) y = Math.Sin(x);
+            else if (Math.Abs(x) >= 3 && Math.Abs(x) <= 9) y = d / c;
+
+            else if (Math.Abs(x) >= 9) y = d - c;
+            return y;
+        }
+
+        static void f(double x, out double y)
+        {
+            y = 0;
+            double d = Math.Sqrt(x * x + 1);
+            double c = Math.Sqrt(x * x + 5);
+            if (Math.Abs(x) <= 1) y = Math.Sin(x);
+            else if (Math.Abs(x) >= 3 && Math.Abs(x) <= 9) y = d / c;
+
+            else if (Math.Abs(x) >= 9) y = d - c;
+
+        }
+
+        static void Main(string[] args)
+        {
+            double a = 5;
+            double b = 7;
+            double h = 12;
+            for (double i = a; i <= b; i += h)
+                Console.WriteLine("f({0:f2})={1:f4}", i, f(i));
+
+            double y;
+            for (double i = a; i <= b; i += h)
+            {
+                f(i, out y);
+                Console.WriteLine("f({0:f2})={1:f4}", i, y);
+            }
+            Console.ReadLine();
+        }
+    }
+}
